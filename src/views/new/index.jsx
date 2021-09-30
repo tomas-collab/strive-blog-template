@@ -9,7 +9,7 @@ import { useState } from "react";
 
 const NewBlogPost =()=>{
  
-const [collection, setCollection] = useState({title:'',category:''})
+const [collection, setCollection] = useState({title:'',category:'',cover:''})
   const handleChange = (key,value)=> {
     setCollection({ 
       ...collection,
@@ -42,6 +42,13 @@ const submitBlog = async(e)=>{
             placeholder="title"
             value={collection.title}
             onChange={(e)=>{handleChange('title',e.target.value)}} />
+          </Form.Group>
+          <Form.Group controlId="blog-form" className="mt-3">
+            <Form.Label>cover</Form.Label>
+            <Form.Control size="lg" 
+            placeholder="cover"
+            value={collection.cover}
+            onChange={(e)=>{handleChange('cover',e.target.value)}} />
           </Form.Group>
           <Form.Group controlId="blog-category" className="mt-3">
             <Form.Label>Category</Form.Label>

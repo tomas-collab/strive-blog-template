@@ -1,13 +1,14 @@
 import { useState } from "react"
 import React from 'react'
 import {Form,Button} from 'react-bootstrap'
-import Axios from 'axios'
+import { Redirect } from "react-router-dom"
 
 const LogIn=()=>{
 
 
     const [registration, setRegistration] = useState({email:'',password:''})
     const [shopComplete, setShopComplete] = useState(false)
+    const [redirect, setRedirect] = useState(false)
 
  const handleInput = (key,value)=>{
           setRegistration(
@@ -33,7 +34,11 @@ const LogIn=()=>{
            }else{
                console.log('bad request')
            }
+           setRedirect(true)
     
+ }
+ if(redirect){
+     return <Redirect to='/'/>
  }
 
  const isButtonDisabled = ()=>{

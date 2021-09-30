@@ -1,5 +1,4 @@
 import React from "react";
-import NavBar from "./components/navbar";
 import Footer from "./components/footer";
 import Home from "./views/home";
 import Blog from "./views/blog";
@@ -11,7 +10,7 @@ import Registration from "./components/Registration";
 function App() {
   return (
     <BrowserRouter>
-      <Route path='/' exact component={NavBar} />
+     
       <Route path="/" exact component={Home} />
       <Route path="/logIn" exact component={LogIn}/>
       <Route path="/registration" exact component={Registration}/>
