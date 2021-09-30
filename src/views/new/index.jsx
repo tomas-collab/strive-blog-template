@@ -3,28 +3,52 @@ import "react-quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
 import { Container, Form, Button } from "react-bootstrap";
 import "./styles.css";
-export default class NewBlogPost extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { text: "" };
-    this.handleChange = this.handleChange.bind(this);
-  }
+import { useState } from "react";
 
-  handleChange(value) {
-    this.setState({ text: value });
-  }
 
-  render() {
+
+const NewBlogPost =()=>{
+ 
+const [collection, setCollection] = useState({title:'',category:''})
+  const handleChange = (key,value)=> {
+    setCollection({ 
+      ...collection,
+      [key]:value
+     });
+  }
+const submitBlog = async(e)=>{
+  e.preventDefault()
+  try {
+    let response = await fetch('http://localhost:3001/blogs',{
+      method:'POST',
+      body:JSON.stringify(collection),
+      headers:{"Content-Type":'application/json'}
+    })
+    if(response.ok){
+      alert('comment added')
+    }else{
+      alert('error')
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
     return (
       <Container className="new-blog-container">
-        <Form className="mt-5">
+        <Form className="mt-5" onSubmit={submitBlog}>
           <Form.Group controlId="blog-form" className="mt-3">
             <Form.Label>Title</Form.Label>
-            <Form.Control size="lg" placeholder="Title" />
+            <Form.Control size="lg" 
+            placeholder="title"
+            value={collection.title}
+            onChange={(e)=>{handleChange('title',e.target.value)}} />
           </Form.Group>
           <Form.Group controlId="blog-category" className="mt-3">
             <Form.Label>Category</Form.Label>
-            <Form.Control size="lg" as="select">
+            <Form.Control size="lg" as="select"
+            value={collection.category}
+            onChange={(e)=>{handleChange('category',e.target.value)}}
+            >
               <option>Category1</option>
               <option>Category2</option>
               <option>Category3</option>
@@ -35,11 +59,12 @@ export default class NewBlogPost extends Component {
           <Form.Group controlId="blog-content" className="mt-3">
             <Form.Label>Blog Content</Form.Label>
             <ReactQuill
-              value={this.state.text}
-              onChange={this.handleChange}
+              // value={text}
+              onChange={handleChange}
               className="new-blog-content"
             />
           </Form.Group>
+      
           <Form.Group className="d-flex mt-3 justify-content-end">
             <Button type="reset" size="lg" variant="outline-dark">
               Reset
@@ -56,5 +81,10 @@ export default class NewBlogPost extends Component {
         </Form>
       </Container>
     );
-  }
+
 }
+
+export default  NewBlogPost
+
+
+
