@@ -1,6 +1,7 @@
 import { useState } from "react"
 import React from  'react'
-import {Form,Button,} from 'react-bootstrap'
+import {Form,Button, Navbar,Nav,Container} from 'react-bootstrap'
+import { Link } from "react-router-dom"
 import { Redirect } from "react-router-dom"
 
 
@@ -55,6 +56,18 @@ const Registration=()=>{
  }
     return(
          <>
+             <Navbar bg="primary" variant="dark">
+                        <Container>
+                              <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+                              <Nav className="me-auto">
+                                 <Nav.Link href="#home">Home</Nav.Link>
+                                 <Nav.Link href="#features">Features</Nav.Link>
+                                 <Nav href="#features"><Link to='/logIn'>logIn</Link></Nav>
+                                 
+                               </Nav>
+                        </Container>
+                </Navbar>
+         
          <Form className='form' onSubmit={handleSubmit}>
 
                 <Form.Group className="mb-3">

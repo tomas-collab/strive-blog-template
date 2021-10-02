@@ -11,9 +11,9 @@ function App() {
   return (
     <BrowserRouter>
      
-      <Route path="/" exact component={Home} />
+      <Route path="/Home" exact component={Home} />
       <Route path="/logIn" exact component={LogIn}/>
-      <Route path="/registration" exact component={Registration}/>
+      <Route path="/" exact component={Registration}/>
       <Route path="/blog/:id" exact component={Blog} />
       <Route path="/new" exact component={NewBlogPost} />
       <Footer />

@@ -40,7 +40,7 @@ const LogIn=()=>{
     
  }
  if(redirect){
-     return <Redirect to='/'/>
+     return <Redirect to='/Home'/>
  }
 
  const isButtonDisabled = ()=>{
@@ -53,6 +53,7 @@ const LogIn=()=>{
  }
     return(
          <>
+
          <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" >
                     <Form.Label>Email address</Form.Label>
