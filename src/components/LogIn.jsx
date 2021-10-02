@@ -23,18 +23,20 @@ const LogIn=()=>{
          const response = await fetch('http://localhost:3000/authors/login',{
                method:'POST',
                headers:{"Content-Type": "application/json"},
+            //    credentials:'include',
                body:JSON.stringify({
                    email:registration.email,
-                  password:registration.password})
+                   password:registration.password})
            })
            if(response.ok){
                const data = await response.json()
-               console.log(data)
-
+               localStorage.setItem('data',"Bearer " + (data.accessToken))
+                
+                console.log('token',data.accessToken)
+                setRedirect(true)
            }else{
                console.log('bad request')
            }
-           setRedirect(true)
     
  }
  if(redirect){
@@ -64,6 +66,7 @@ const LogIn=()=>{
                     Submit
                 </Button>
         </Form>  
+        {/* <a href="http://localhost:3000/authors/googleLogin"><button>google logIn</button></a> */}
          </>
     )
 }

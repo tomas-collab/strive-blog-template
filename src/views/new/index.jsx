@@ -19,9 +19,12 @@ const [collection, setCollection] = useState({title:'',category:'',cover:''})
 const submitBlog = async(e)=>{
   e.preventDefault()
   try {
-    let response = await fetch('http://localhost:3001/blogs',{
+    let response = await fetch('http://localhost:3000/blogPosts',{
       method:'POST',
-      body:JSON.stringify(collection),
+      body:JSON.stringify(
+        collection,
+        
+        ),
       headers:{"Content-Type":'application/json'}
     })
     if(response.ok){
