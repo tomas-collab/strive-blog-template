@@ -53,8 +53,9 @@ const LogIn=()=>{
  }
     return(
          <>
-
-         <Form onSubmit={handleSubmit}>
+             
+         <Form className='logIn' onSubmit={handleSubmit}>
+             <h4>sign in with email</h4>
                 <Form.Group className="mb-3" >
                     <Form.Label>Email address</Form.Label>
                     <Form.Control type="email" placeholder="Enter email" onChange={(e)=>handleInput('email',e.target.value)}  value={registration.email}/>

@@ -62,7 +62,8 @@ const Registration=()=>{
                               <Nav className="me-auto">
                                  <Nav.Link href="#home">Home</Nav.Link>
                                  <Nav.Link href="#features">Features</Nav.Link>
-                                 <Nav href="#features"><Link to='/logIn'>logIn</Link></Nav>
+                                 <Nav.Link href="#features"> <Link style={{color:"black"}} to='/logIn'>logIn</Link></Nav.Link>
+                                
                                  
                                </Nav>
                         </Container>
@@ -71,6 +72,7 @@ const Registration=()=>{
          <Form className='form' onSubmit={handleSubmit}>
 
                 <Form.Group className="mb-3">
+                    <h4>First time here</h4>
                      <Form.Label>Name</Form.Label>
                     <Form.Control type="text" placeholder="Enter name" onChange={(e)=>handleInput("name",e.target.value)} value={registration.name}/>
                 </Form.Group>

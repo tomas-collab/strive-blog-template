@@ -1,3 +1,10 @@
 body {
   font-family: "Ubuntu", sans-serif;
 }
+
+.logIn{
+  margin-top: 100px;
+  margin-left: 200px;
+  margin-right: 200px;
+  
+}
